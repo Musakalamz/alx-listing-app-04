@@ -27,6 +27,17 @@ export interface ButtonProps {
 /**
  * Defines the structure for property data
  */
+export interface Property {
+  id: number;
+  title: string;
+  location: string;
+  price: number;
+  imageUrl: string;
+  description?: string;
+  bedrooms?: number;
+  bathrooms?: number;
+  amenities?: string[];
+}
 export interface PropertyProps {
   name: string;
   address: {
