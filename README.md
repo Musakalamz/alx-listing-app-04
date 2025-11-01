@@ -1,110 +1,95 @@
-# 🏡 ALX Listing App 00
+# 📡 Milestone 5: API Integration for All Pages (Dynamic Data)
 
-**Milestone 2: Responsive Property Listing Page**  
-_Project: ProDev Frontend – Week 4_
+This repository holds the solution for **Milestone 5: API Integration for All Pages**. This critical milestone transforms the static prototype into a fully interactive application by integrating **REST API endpoints** to dynamically fetch and manage all core data (listings, details, bookings, and reviews).
 
----
+The implementation leverages **Next.js** and **Axios** to handle asynchronous data fetching, loading states, error reporting, and form submission.
 
-## 📖 Project Overview
+## ✨ Project Highlights & Key Concepts
 
-This project involves building a **responsive property listing page** using **Next.js, TypeScript, and Tailwind CSS**.  
-The application displays a collection of luxury properties with filtering capabilities, a hero section, and proper layout organization.  
-The design follows **responsive web principles** and maintains a clean, user-friendly interface across all devices.
+This project demonstrates expertise in building data-driven applications by mastering:
 
----
+* **Dynamic Data Fetching:** Utilizing the `useEffect` hook and **Axios** for performing `GET` requests to load live data when components mount or parameters change.
+* **Loading & Error Handling:** Implementing state management (`useState`) to provide clear user feedback (e.g., "Loading...", error messages) during API calls.
+* **Dynamic Routing & Fetching:** Fetching property-specific data (`GET /properties/:id`) based on Next.js `router.query` parameters.
+* **Form Submission (POST):** Handling the booking process by securely submitting user data (`POST /bookings`) to a backend endpoint.
+* **Component Modularity:** Re-architecting components (`PropertyCard`, `PropertyDetail`, `ReviewSection`) to accept and render dynamic data instead of relying on hardcoded constants.
 
-## 🎯 Learning Objectives
+## 🚀 Getting Started
 
-By completing this project, you will:
+Follow these instructions to set up and run the dynamic application locally.
 
-- Implement **responsive web design** with Tailwind CSS.
-- Build **reusable React/Next.js components** (Header, Footer, Layout).
-- Use **TypeScript interfaces** for type safety.
-- Structure a Next.js application with **logical folder hierarchy**.
-- Render **dynamic property data** from arrays.
-- Implement **filter functionality** for listings.
-- Apply **component composition best practices**.
-- Break down UI mockups into **scalable, maintainable code**.
+### Prerequisites
 
----
+* **Node.js** (LTS version recommended)
+* **npm** or **yarn**
+* **Git**
 
-## 🛠️ Tech Stack
+### Installation and Local Run
 
-- **Framework:** Next.js (React-based)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Data Management:** Typed arrays & interfaces
-- **Version Control:** Git & GitHub
+1.  **Clone the Repository**
+    The project is a continuation of the previous milestone.
+    ```bash
+    git clone [https://github.com/Musakalamz/alx-listing-app-04.git](https://github.com/Musakalamz/alx-listing-app-04.git)
+    cd alx-listing-app-04
+    ```
 
----
+2.  **Install Dependencies**
+    The project requires the Axios library for API requests.
+    ```bash
+    npm install axios
+    npm install
+    ```
 
-## 📂 Project Structure
+3.  **Run the Application**
+    **Note:** This front-end assumes the existence of local API endpoints (`/api/properties`, `/api/bookings`, etc.) for demonstration purposes.
+    ```bash
+    npm run dev
+    ```
+    The application will run on `http://localhost:3000`.
 
-```bash
-alx-listing-app-00/
-├── components/
-│   └── layout/
-│       ├── Header.tsx
-│       ├── Footer.tsx
-│       └── Layout.tsx
-├── constants/
-│   └── index.ts          # Sample property listing data
-├── interfaces/
-│   └── index.ts          # PropertyProps interface
-├── pages/
-│   ├── _app.tsx          # Root wrapper with Layout
-│   └── index.tsx         # Homepage with Hero, Filters, Listings
-├── public/
-├── styles/
-│   └── globals.css
-└── README.md
+## ⚙️ API Endpoints Integrated
 
+The following API interaction points were implemented across the application:
 
-```
+| Page/Component | Request Type | Endpoint Used (Assumed) | Key Concept Demonstrated |
+| :--- | :--- | :--- | :--- |
+| **Listing Page** (`pages/index.tsx`) | `GET` | `/api/properties` | Initial data fetching for the main feed. |
+| **Detail Page** (`pages/property/[id].tsx`) | `GET` | `/api/properties/${id}` | Dynamic fetching based on route parameters. |
+| **Booking Form** (`pages/booking/index.tsx`) | `POST` | `/api/bookings` | Form submission and processing state management. |
+| **Review Section** (`components/property/ReviewSection.tsx`) | `GET` | `/api/properties/${propertyId}/reviews` | Child component fetching its own necessary data. |
 
----
+## 💻 Technical Implementation Details
 
-## 🚀 Features
+The integration utilizes standard React Hooks and Axios:
 
-- **Hero Section**  
-  Eye-catching banner with tagline:  
-  _“Find your favorite place here! The best prices for over 2 million properties worldwide.”_
+* **Property Listing Page (`pages/index.tsx`):**
+    ```typescript
+    useEffect(() => { /* axios.get("/api/properties") */ }, []);
+    ```
+* **Property Detail Page (`pages/property/[id].tsx`):**
+    ```typescript
+    useEffect(() => { /* axios.get(`/api/properties/${id}`) */ }, [id]);
+    ```
+* **Booking Form (`pages/booking/index.tsx`):**
+    ```typescript
+    const handleSubmit = async (e) => { /* await axios.post("/api/bookings", formData) */ };
+    ```
 
-- **Filter Section**  
-  Interactive filter pills for quick property searches.
+## 🛠️ Tools and Libraries
 
-- **Property Listings**  
-  Grid-based responsive cards with:
+* **Next.js:** Framework for server-side rendering and routing.
+* **React Hooks:** Essential for managing state (`useState`) and side effects (`useEffect`).
+* **Axios:** Promise-based HTTP client used for all API communication.
+* **TypeScript:** Used throughout the project for type-safe data handling.
+* **Tailwind CSS:** Used for consistent styling.
 
-  - Property name
-  - Location
-  - Rating
-  - Price
-  - Amenities/Offers
-  - Image & discount info
+## 👤 Author
 
-- **Reusable Components**
-  - `Header`: Navigation, logo, search, sign-in/sign-up
-  - `Footer`: Quick links, credits
-  - `Layout`: Wrapper for consistent structure
-
----
-
-## 📌 Requirements Met
-
-- ✅ **Responsive Layouts** (mobile → tablet → desktop)
-- ✅ **Functional Filters & Listings**
-- ✅ **Typed Property Data Interface**
-- ✅ **Reusable Layout Components**
-- ✅ **Semantic HTML & Accessibility Standards**
+* **Musa Ogunsolu** (GitHub: [Musakalamz](https://github.com/Musakalamz))
+* **LinkedIn:** [Musa Ogunsolu](https://www.linkedin.com/in/musa-ogunsolu)
 
 ---
 
-## ⚙️ Getting Started
+## ⚖️ License
 
-### 1. Clone Repo
-
-```bash
-git clone https://github.com/<your-username>/alx-listing-app-00.git
-cd alx-listing-app-00
-```
+* **ALX** - This project is for educational purposes as part of the ALX curriculum.
