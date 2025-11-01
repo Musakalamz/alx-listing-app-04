@@ -1,15 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PropertyCard from "@/components/property/PropertyCard";
-
-interface Property {
-  id: number;
-  title: string;
-  location: string;
-  price: number;
-  imageUrl: string;
-  description?: string;
-}
+import type { Property } from "@/interfaces";
 
 export default function Home() {
   const [properties, setProperties] = useState<Property[]>([]);
